@@ -13,7 +13,7 @@ class Game {
   //and calls the addPhraseToDisplay() method on the active phrase
   startGame() {
     // resetting the board on new game start.
-    
+    this.gameRunning = false;
     letterDiv.innerHTML = "";
     letterDiv.classList.add('fade-in');
     onscreenKeys.forEach((key) => {
