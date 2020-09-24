@@ -45,6 +45,10 @@ class Game {
   // the checkForWin() method is called. If the player has won the game
   // the gameOver() method is called
   handleInteraction(letter) {
+    let ignoreKey;
+    const disabledKeys = document.querySelectorAll('button[disabled]');
+    disabledKeys.forEach(character => character.textContent === letter?ignoreKey = true : false);
+    if(ignoreKey) return;
     let audio = new Audio('sounds/buttonActivation.mp3');
     audio.volume = 0.3;
     audio.play();
