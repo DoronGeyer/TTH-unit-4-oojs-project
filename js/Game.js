@@ -7,20 +7,20 @@ class Game {
     this.gameRunning = false;
     this.missed = 0;
     this.phrases = this.createPhrases();
-    this.activePhrase = this.getRandomPhrase();
+    this.activePhrase = null;
   }
   //hides the start screen overlay, sets the activePhrase property to a random phrase
   //and calls the addPhraseToDisplay() method on the active phrase
   startGame() {
     // resetting the board on new game start.
-
+    
     letterDiv.innerHTML = "";
     letterDiv.classList.add('fade-in');
     onscreenKeys.forEach((key) => {
       key.disabled = false;
       key.setAttribute("class", "key");
     });
-    
+    this.activePhrase = this.getRandomPhrase();
     this.missed = 0;
 
     document
@@ -45,6 +45,9 @@ class Game {
   // the checkForWin() method is called. If the player has won the game
   // the gameOver() method is called
   handleInteraction(letter) {
+    let audio = new Audio('sounds/buttonActivation.mp3');
+    audio.volume = 0.3;
+    audio.play();
     if (this.activePhrase.checkLetter(letter)) {
       onscreenKeys.forEach((character) => {
         if (character.textContent == letter) {
@@ -120,8 +123,8 @@ class Game {
     phrase.push(new Phrase("I think therefore I am"));
     phrase.push(new Phrase("Riddle me this"));
     phrase.push(new Phrase("Hello clarice"));
-    phrase.push(new Phrase("Do your actions match your ambitions"));
-    phrase.push(new Phrase("Speak softly and carry a big stick"));
+    phrase.push(new Phrase("Just do it"));
+    phrase.push(new Phrase("And still i rise"));
     return phrase;
   }
 }
