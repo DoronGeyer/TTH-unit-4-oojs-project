@@ -88,7 +88,7 @@ class Game {
   //overlay styled with either the win or lose CSS class
   gameOver() {
     letterDiv.classList.remove('fade-in');
-    document.getElementById("overlay").style.display = "block";
+    document.getElementById("overlay").style.display = "inherit";
     let gameOverMessage = document.querySelector("#game-over-message");
     gameOverMessage.classList.remove("start");
     if (this.checkForWin()) {
